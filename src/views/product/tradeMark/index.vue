@@ -1,7 +1,13 @@
 <template>
   <div>
     <!-- 按钮 -->
-    <el-button type="primary" icon="el-icon-plus" style="margin: 10px 0px;" size="default" @click="showDiaLog">添加</el-button>
+    <el-button
+      type="primary"
+      icon="el-icon-plus"
+      style="margin: 10px 0px;"
+      size="default"
+      @click="showDiaLog"
+    >添加</el-button>
     <!--
       表单组件
       data:表格将来需要展示的数据(Array)
@@ -12,7 +18,12 @@
       align:对齐方式
     -->
     <el-table style="width: 100%;" border :data="records">
-      <el-table-column type="index" label="序号" width="80px" align="center" />
+      <el-table-column
+        type="index"
+        label="序号"
+        width="80px"
+        align="center"
+      />
       <el-table-column prop="tmName" label="品牌名称" width="width" />
       <el-table-column prop="logoUrl" label="品牌LOGO" width="width">
         <template slot-scope="{row}">
@@ -21,8 +32,18 @@
       </el-table-column>
       <el-table-column prop="prop" label="操作" width="width">
         <template slot-scope="{row}">
-          <el-button type="warning" size="mini" icon="el-icon-edit" @click="updateDiaLog(row)">修改</el-button>
-          <el-button type="danger" size="mini" icon="el-icon-delete" @click="deleteDiaLog(row)">删除</el-button>
+          <el-button
+            type="warning"
+            size="mini"
+            icon="el-icon-edit"
+            @click="updateDiaLog(row)"
+          >修改</el-button>
+          <el-button
+            type="danger"
+            size="mini"
+            icon="el-icon-delete"
+            @click="deleteDiaLog(row)"
+          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -58,7 +79,12 @@
         :model:把表单数据收集到哪个对象上，之后表单验证也需要用到
         Form 组件提供了表单验证的功能，只需要通过 rules 属性传入约定的验证规则，并将 Form-Item 的 prop 属性设置为需校验的字段名即可
       -->
-      <el-form ref="rulerForm" style="width: 80%;" :model="tmForm" :rules="rules">
+      <el-form
+        ref="rulerForm"
+        style="width: 80%;"
+        :model="tmForm"
+        :rules="rules"
+      >
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
           <!-- 这里可用v-model进行绑定 -->
           <el-input v-model="tmForm.tmName" autocomplete="off" />
