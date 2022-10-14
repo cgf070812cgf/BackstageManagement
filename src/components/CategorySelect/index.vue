@@ -3,7 +3,7 @@
     <!-- inline:代表行内表单，一行内可放多个表单元素 -->
     <el-form :inline="true" :model="categoryListID" class="demo-form-inline">
       <el-form-item label="一级分类">
-        <el-select v-model="categoryListID.category1ListID" placeholder="请选择" @change="handler1">
+        <el-select v-model="categoryListID.category1ListID" placeholder="请选择" :disabled="show" @change="handler1">
           <el-option
             v-for="c1 in list1"
             :key="c1.id"
@@ -13,7 +13,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
-        <el-select v-model="categoryListID.category2ListID" placeholder="请选择" @change="handler2">
+        <el-select v-model="categoryListID.category2ListID" placeholder="请选择" :disabled="show" @change="handler2">
           <el-option
             v-for="c2 in list2"
             :key="c2.id"
@@ -23,7 +23,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="三级分类">
-        <el-select v-model="categoryListID.category3ListID" placeholder="请选择" @change="handler3">
+        <el-select v-model="categoryListID.category3ListID" placeholder="请选择" :disabled="show" @change="handler3">
           <el-option
             v-for="c3 in list3"
             :key="c3.id"
@@ -39,6 +39,12 @@
 <script>
 export default {
   name: 'CategorySelect',
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       list1: [],
